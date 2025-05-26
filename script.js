@@ -5,8 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
   navToggle.addEventListener('click', () => {
     nav.classList.toggle('active');
   });
-
-  // Close nav when a link is clicked
   nav.querySelectorAll('a').forEach(link => {
     link.addEventListener('click', () => {
       nav.classList.remove('active');
@@ -16,23 +14,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.addEventListener('DOMContentLoaded', () => {
   const sections = document.querySelectorAll('.content section:not(#education)');
-  
-  // Assign alternating slide directions
+
   sections.forEach((section, index) => {
     section.classList.add(index % 2 === 0 ? 'slide-from-left' : 'slide-from-right');
   });
 
-  // Intersection Observer to trigger animations
   const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        // Unobserve the section to improve performance
         observer.unobserve(entry.target);
       }
     });
   }, {
-    threshold: 0.6 // Trigger when 10% of the section is visible
+    threshold: 0.6 
   });
 
   sections.forEach(section => {
@@ -107,7 +102,7 @@ function processCommand() {
         case "hobbies":
             reply = "Coding Side Projects, Competitive Programming, Reading Research Papers, Web Development.";
             break;
-        case "open resume":
+        case "resume":
             window.open("Resume_Hemanth.pdf", "_blank"); 
             reply = "Opening resume...";
             break;
@@ -120,7 +115,7 @@ function processCommand() {
     break;
 
         default:
-            reply = "Unknown command. Try 'whoami', 'hobbies', 'contact' or 'open resume'.";
+            reply = "Unknown command. Try 'whoami', 'hobbies', 'contact'.";
     }
 
     response.innerHTML = `AI: ${reply}`;
