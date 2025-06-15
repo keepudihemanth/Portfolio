@@ -100,7 +100,7 @@ function processCommand() {
             reply = "Hemanth is a Postgraduate studying Integrated MTech CSE at VITAP.";
             break;    
         case "hobbies":
-            reply = "Coding Side Projects, Competitive Programming, Reading Research Papers, Web Development.";
+            reply = "Coding Side Projects, Competitive Programming, Reading Research Papers, Web Development,Playing Video Games.";
             break;
         case "resume":
             window.open("Resume_Hemanth.pdf", "_blank"); 
