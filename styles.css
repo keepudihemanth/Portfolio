@@ -15,6 +15,7 @@ html {
   font-size: clamp(12px, 2.5vw, 16px);
 }
 
+
 /* Header Styles */
 header {
   display: flex;
@@ -97,15 +98,59 @@ canvas {
 }
 
 .console {
-  max-width: 90%;
-  width: clamp(250px, 80%, 800px);
+  max-width: 600px; 
+  width: clamp(220px, 60%, 600px); 
   margin: 0 auto;
   background-color: #1f2833;
-  padding: clamp(1rem, 3vw, 2rem);
+  padding: clamp(0.8rem, 2vw, 1.5rem); 
   border: 1px solid #45a29e;
   border-radius: 8px;
   box-shadow: 0 0 20px #45a29e;
   font-family: 'Courier New', Courier, monospace;
+}
+
+.button-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.neon-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  background-color: #000;
+  border: 2px solid #00ffff;
+  color: #00ffff;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 12px;
+  box-shadow: 0 0 10px #00ffff88, 0 0 20px #00ffff55;
+  transition: all 0.3s ease;
+}
+
+.neon-button img {
+  width: 20px;
+  height: 20px;
+}
+
+.neon-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #00ffffcc, 0 0 30px #00ffff88;
+}
+.typewriter-cursor::after {
+  content: "|";
+  margin-left: 2px;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 
 /* Console Text and Input */
@@ -119,27 +164,6 @@ canvas {
 
 .ai {
   color: #f8f8f2;
-}
-
-.input-area {
-  display: flex;
-  align-items: center;
-  margin-top: clamp(0.5rem, 3vw, 1.5rem);
-}
-
-.input-area span {
-  margin-right: clamp(0.3rem, 2vw, 0.8rem);
-}
-
-input[type="text"] {
-  flex: 1;
-  background: transparent;
-  border: none;
-  border-bottom: 1px solid #66fcf1;
-  color: #66fcf1;
-  font-family: inherit;
-  font-size: clamp(0.7rem, 2.5vw, 1rem);
-  outline: none;
 }
 
 /* Content and Sections */
