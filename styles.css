@@ -898,7 +898,8 @@ footer p {
   }
 
   .project-card {
-    height: clamp(220px, 60vw, 280px);
+    min-height: 280px;
+  height: auto;
   }
 
   .project-card-back {
