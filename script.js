@@ -79,46 +79,71 @@ window.addEventListener('resize', () => {
     camera.updateProjectionMatrix();
 });
 
-// Console Interaction
-function processCommand() {
-    const input = document.getElementById("userInput").value;
-    const output = document.getElementById("output");
+function typeWriterEffect(element, text, delay = 40, callback = null) {
+  let i = 0;
+  element.classList.add("typewriter-cursor");
 
-    // Create div for user command
-    const userCommand = document.createElement("div");
-    userCommand.className = "line user";
-    userCommand.textContent = `> ${input}`;
-    output.appendChild(userCommand);
+  function type() {
+    if (i < text.length) {
+      element.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(type, delay);
+    } else if (callback) {
+      callback();
+    }
+  }
 
-    // Create div for AI response
-    const response = document.createElement("div");
-    response.className = "line ai";
+  element.innerHTML = ""; // Clear before typing
+  type();
+}
 
-    let reply;
-    switch (input.toLowerCase()) {
-        case "whoami":
-            reply = "Hemanth is a Postgraduate studying Integrated MTech CSE at VITAP.";
-            break;    
-        case "hobbies":
-            reply = "Coding Side Projects, Competitive Programming, Reading Research Papers, Web Development,Playing Video Games.";
-            break;
-        case "resume":
-            window.open("Resume_Hemanth.pdf", "_blank"); 
-            reply = "Opening resume...";
-            break;
-        case "contact":
-            reply = `
-                    Gmail: <a>keepudihemanth6329@gmail.com</a><br>
-                    You can check my GitHub here: <a href="https://github.com/keepudihemanth" target="_blank">GitHub</a><br>
-                    You can check my LinkedIn here: <a href="https://www.linkedin.com/in/keepudi-hemanth" target="_blank">LinkedIn</a>
-    `;
-    break;
+function deleteWriterEffect(element, delay = 20, callback = null) {
+  let text = element.innerHTML;
+  let i = text.length;
 
-        default:
-            reply = "Unknown command. Try 'whoami', 'hobbies', 'contact'.";
+  function erase() {
+    if (i > 0) {
+      element.innerHTML = text.substring(0, --i);
+      setTimeout(erase, delay);
+    } else if (callback) {
+      callback();
+    }
+  }
+
+  erase();
+}
+
+function showWelcomeMessage() {
+  const output = document.getElementById("output");
+  output.innerHTML = "";
+
+  const line1 = document.createElement("div");
+  line1.className = "line ai";
+  output.appendChild(line1);
+
+  typeWriterEffect(line1, "HOLA! Welcome to my Portfolio ✌️", 40, () => {
+    const line2 = document.createElement("div");
+    line2.className = "line ai typewriter-cursor";
+    output.appendChild(line2);
+
+    const baseText = "I am ";
+    const roles = ["a Software Developer", "a Student", "a Tech Enthusiast", "an Innovator"];
+    let roleIndex = 0;
+
+    function loopRoles() {
+      const fullText = baseText + roles[roleIndex];
+      typeWriterEffect(line2, fullText, 40, () => {
+        setTimeout(() => {
+          deleteWriterEffect(line2, 20, () => {
+            roleIndex = (roleIndex + 1) % roles.length;
+            loopRoles();
+          });
+        }, 800);
+      });
     }
 
-    response.innerHTML = `AI: ${reply}`;
-    output.appendChild(response);
-    document.getElementById("userInput").value = "";
+    loopRoles();
+  });
 }
+
+window.onload = showWelcomeMessage;
