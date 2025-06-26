@@ -15,25 +15,36 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
   const sections = document.querySelectorAll('.content section:not(#education)');
 
+  const isMobile = window.innerWidth <= 768;
+
   sections.forEach((section, index) => {
-    section.classList.add(index % 2 === 0 ? 'slide-from-left' : 'slide-from-right');
+    if (!isMobile) {
+      section.classList.add(index % 2 === 0 ? 'slide-from-left' : 'slide-from-right');
+    }
+    // On small screens, just make it visible immediately
+    if (isMobile) {
+      section.classList.add('visible');
+    }
   });
 
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
+  if (!isMobile) {
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.6
     });
-  }, {
-    threshold: 0.6 
-  });
 
-  sections.forEach(section => {
-    observer.observe(section);
-  });
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  }
 });
+
 
 // Scene Setup
 const scene = new THREE.Scene();
@@ -147,3 +158,8 @@ function showWelcomeMessage() {
 }
 
 window.onload = showWelcomeMessage;
+if (window.innerWidth <= 768) {
+  document.querySelectorAll('.project-card-inner').forEach(card => {
+    card.classList.add('no-flip');
+  });
+}
