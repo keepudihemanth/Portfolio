@@ -1025,7 +1025,9 @@ footer p {
   }
 
   .project-card {
-    height: clamp(200px, 70vw, 260px);
+  min-height: 300px;
+  height: auto;
+
   }
 
   .project-card-front h3 {
