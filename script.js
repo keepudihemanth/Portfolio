@@ -1,165 +1,210 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const navToggle = document.querySelector('.nav-toggle');
-  const nav = document.querySelector('nav');
+/*   Starfield background (Three.js) - kept from the original*/
+(function initStars() {
+  if (typeof THREE === 'undefined') return;
 
-  navToggle.addEventListener('click', () => {
-    nav.classList.toggle('active');
-  });
-  nav.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      nav.classList.remove('active');
-    });
-  });
-});
+  const canvas = document.getElementById('bg');
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  camera.position.z = 0;
 
-document.addEventListener('DOMContentLoaded', () => {
-  const sections = document.querySelectorAll('.content section:not(#education)');
+  const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: false });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setSize(window.innerWidth, window.innerHeight, false);
 
-  const isMobile = window.innerWidth <= 768;
-
-  sections.forEach((section, index) => {
-    if (!isMobile) {
-      section.classList.add(index % 2 === 0 ? 'slide-from-left' : 'slide-from-right');
-    }
-    // On small screens, just make it visible immediately
-    if (isMobile) {
-      section.classList.add('visible');
-    }
-  });
-
-  if (!isMobile) {
-    const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.6
-    });
-
-    sections.forEach(section => {
-      observer.observe(section);
-    });
+  const starsCount = window.innerWidth < 768 ? 4000 : 10000;
+  const positions = new Float32Array(starsCount * 3);
+  for (let i = 0; i < positions.length; i++) {
+    positions[i] = Math.random() * 2000 - 1000;
   }
-});
 
+  const geometry = new THREE.BufferGeometry();
+  geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  const material = new THREE.PointsMaterial({ color: 0x888888, size: 0.5 });
+  const stars = new THREE.Points(geometry, material);
+  scene.add(stars);
 
-// Scene Setup
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({ alpha: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-// Create Stars
-const starsGeometry = new THREE.BufferGeometry();
-const starsMaterial = new THREE.PointsMaterial({ color: 0x888888, size: 0.5 });
-const starsCount = 10000;
-const positions = [];
-
-for (let i = 0; i < starsCount; i++) {
-    positions.push(
-        Math.random() * 2000 - 1000, // x
-        Math.random() * 2000 - 1000, // y
-        Math.random() * 2000 - 1000  // z
-    );
-}
-
-starsGeometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
-const stars = new THREE.Points(starsGeometry, starsMaterial);
-scene.add(stars);
-
-// Camera Position
-camera.position.z = 0;
-
-// Animation Loop
-function animate() {
-    requestAnimationFrame(animate);
-    stars.rotation.x += 0.001;
-    stars.rotation.y += 0.001;
+  function animate() {
+    if (!reduceMotion) {
+      stars.rotation.x += 0.001;
+      stars.rotation.y += 0.001;
+    }
     renderer.render(scene, camera);
-}
-animate();
+    requestAnimationFrame(animate);
+  }
+  animate();
 
-// Adjust Canvas Size on Window Resize
-window.addEventListener('resize', () => {
-    renderer.setSize(window.innerWidth, window.innerHeight);
+  window.addEventListener('resize', () => {
+    renderer.setSize(window.innerWidth, window.innerHeight, false);
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
-});
+  });
+})();
 
-function typeWriterEffect(element, text, delay = 40, callback = null) {
-  let i = 0;
-  element.classList.add("typewriter-cursor");
+/*   Typewriter intro*/
+(function initTypewriter() {
+  const el = document.getElementById('typed');
+  if (!el) return;
 
-  function type() {
-    if (i < text.length) {
-      element.innerHTML += text.charAt(i);
-      i++;
-      setTimeout(type, delay);
-    } else if (callback) {
-      callback();
+  const roles = ['a Software Developer', 'a Student', 'a Tech Enthusiast', 'an Innovator'];
+  const prefix = 'HOLA! I am ';
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (reduceMotion) {
+    el.textContent = prefix + roles[0];
+    return;
+  }
+
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+  async function typeText(text, speed = 45) {
+    for (const ch of text) {
+      el.textContent += ch;
+      await sleep(speed);
     }
   }
 
-  element.innerHTML = ""; // Clear before typing
-  type();
-}
-
-function deleteWriterEffect(element, delay = 20, callback = null) {
-  let text = element.innerHTML;
-  let i = text.length;
-
-  function erase() {
-    if (i > 0) {
-      element.innerHTML = text.substring(0, --i);
-      setTimeout(erase, delay);
-    } else if (callback) {
-      callback();
+  async function eraseText(speed = 25) {
+    while (el.textContent.length > 0) {
+      el.textContent = el.textContent.slice(0, -1);
+      await sleep(speed);
     }
   }
 
-  erase();
-}
+  async function run() {
+    el.textContent = '';
+    await sleep(600);
+    await typeText(prefix);
+    let i = 0;
+    while (true) {
+      await typeText(roles[i]);
+      await sleep(1600);
+      await eraseText();
+      el.textContent = prefix;
+      i = (i + 1) % roles.length;
+    }
+  }
 
-function showWelcomeMessage() {
-  const output = document.getElementById("output");
-  output.innerHTML = "";
+  run();
+})();
 
-  const line1 = document.createElement("div");
-  line1.className = "line ai";
-  output.appendChild(line1);
+/*   Header: shadow on scroll + mobile menu*/
+(function initHeader() {
+  const header = document.querySelector('.site-header');
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('.site-nav');
 
-  typeWriterEffect(line1, "HOLA! Welcome to my Portfolio ✌️", 40, () => {
-    const line2 = document.createElement("div");
-    line2.className = "line ai typewriter-cursor";
-    output.appendChild(line2);
+  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 20);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
 
-    const baseText = "I am ";
-    const roles = ["a Software Developer", "a Student", "a Tech Enthusiast", "an Innovator"];
-    let roleIndex = 0;
+  function setOpen(open) {
+    nav.classList.toggle('open', open);
+    toggle.classList.toggle('open', open);
+    toggle.setAttribute('aria-expanded', String(open));
+  }
 
-    function loopRoles() {
-      const fullText = baseText + roles[roleIndex];
-      typeWriterEffect(line2, fullText, 40, () => {
-        setTimeout(() => {
-          deleteWriterEffect(line2, 20, () => {
-            roleIndex = (roleIndex + 1) % roles.length;
-            loopRoles();
-          });
-        }, 800);
+  toggle.addEventListener('click', () => setOpen(!nav.classList.contains('open')));
+  nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setOpen(false)));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setOpen(false);
+  });
+})();
+
+/*   Reveal sections on scroll*/
+(function initReveal() {
+  const items = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    items.forEach((el) => el.classList.add('in-view'));
+    return;
+  }
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          obs.unobserve(entry.target);
+        }
       });
+    },
+    { threshold: 0.15 }
+  );
+
+  items.forEach((el) => observer.observe(el));
+})();
+
+/*   Count-up numbers in the stats section*/
+(function initCounters() {
+  const counters = document.querySelectorAll('.count');
+  if (!counters.length || !('IntersectionObserver' in window)) return;
+
+  const animate = (el) => {
+    const target = Number(el.dataset.target);
+    const duration = 1400;
+    const start = performance.now();
+
+    function frame(now) {
+      const t = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      el.textContent = Math.round(target * eased);
+      if (t < 1) requestAnimationFrame(frame);
     }
+    requestAnimationFrame(frame);
+  };
 
-    loopRoles();
-  });
-}
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          animate(entry.target);
+          obs.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.5 }
+  );
 
-window.onload = showWelcomeMessage;
-if (window.innerWidth <= 768) {
-  document.querySelectorAll('.project-card-inner').forEach(card => {
-    card.classList.add('no-flip');
+  counters.forEach((el) => observer.observe(el));
+})();
+
+/*   Footer year*/
+(function initYear() {
+  const year = document.getElementById('year');
+  if (year) year.textContent = new Date().getFullYear();
+})();
+
+/*   Project domains: hover, click or keyboard to switch*/
+(function initDomains() {
+  const buttons = Array.from(document.querySelectorAll('.domain-btn'));
+  if (!buttons.length) return;
+
+  function activate(domain, focus = false) {
+    buttons.forEach((btn) => {
+      const on = btn.dataset.domain === domain;
+      btn.classList.toggle('is-active', on);
+      btn.setAttribute('aria-selected', String(on));
+      btn.tabIndex = on ? 0 : -1;
+      if (on && focus) btn.focus();
+    });
+    document.querySelectorAll('.domain-panel').forEach((panel) => {
+      panel.classList.toggle('is-active', panel.dataset.domain === domain);
+    });
+  }
+
+  buttons.forEach((btn, i) => {
+    btn.addEventListener('mouseenter', () => activate(btn.dataset.domain));
+    btn.addEventListener('click', () => activate(btn.dataset.domain));
+
+    btn.addEventListener('keydown', (e) => {
+      let next = null;
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') next = buttons[(i + 1) % buttons.length];
+      if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') next = buttons[(i - 1 + buttons.length) % buttons.length];
+      if (next) {
+        e.preventDefault();
+        activate(next.dataset.domain, true);
+      }
+    });
   });
-}
+})();
