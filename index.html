@@ -1,356 +1,497 @@
+ex · HTML
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hemanth"s Portfolio</title>
-    <link rel="stylesheet" href="styles.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Hemanth Keepudi - Computer Science student building web apps, AI projects and scalable software." />
+  <title>Hemanth | Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <canvas id="bg" aria-hidden="true"></canvas>
+ 
+  <header class="site-header">
+    <a href="#top" class="logo">Hemanth<span>.</span></a>
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="site-nav">
+      <a href="#about">About</a>
+      <a href="#stats">Stats</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact" class="nav-cta">Contact</a>
+    </nav>
+  </header>
+ 
+  <main>
     
-  </head>
-  <body>
-    <script src="script.js" defer></script>
-    <canvas id="bg"></canvas>
-    <header>
-      <div class="name">Hemanth.</div>
-      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
-      <nav>
-        <a href="#about">About</a>
-        <a href="#stats">Stats</a>
-        <a href="#education">Education</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
-
-<div class="landing">
-  <section class="console" id="console">
-    <div class="line user">Users\Hem> Welcome Buddy!!! </div>
-
-    <div class="line ai" id="output">
-      <!-- Animated output goes here -->
-    </div>
-
-    <div class="button-container">
-      <a href="Resume_Hemanth.pdf" target="_blank" class="neon-button">
-        <img src="https://img.icons8.com/ios-filled/50/00ffff/resume.png" alt="Resume Icon" />
-        Resume
-      </a>
-
-      <a href="https://github.com/keepudihemanth" target="_blank" class="neon-button">
-        <img src="https://img.icons8.com/ios-filled/50/00ffff/github.png" alt="GitHub Icon" />
-        GitHub
-      </a>
-
-      <a href="https://linkedin.com/in/keepudi-hemanth" target="_blank" class="neon-button">
-        <img src="https://img.icons8.com/ios-filled/50/00ffff/linkedin.png" alt="LinkedIn Icon" />
-        LinkedIn
-      </a>
-    </div>
-  </section>
-</div>
-
-
-    <div class="content-wrapper">
-      <div class="content">
-        <section id="about">
-          <h2>About Me</h2>
-          <p>
-            Hi, I'm a curious and driven Computer Science student with a strong
-            foundation in programming, data structures and algorithms. I enjoy
-            creating efficient, scalable, and user-friendly applications,
-            whether it's a web app or a passion project.
-            I've worked with technologies like Java, Python, HTML, CSS,
-            JavaScript, and frameworks such as Spring Boot. I'm also experienced
-            with version control systems like Git and enjoy contributing to
-            open-source projects on GitHub. I thrive in problem-solving
-            environments and love taking part in hackathons, coding contests,
-            and hands-on projects. My interests span across Artificial
-            Intelligence, Web Development, and Cloud Computing, and I'm always
-            eager to learn more. I value teamwork, good communication, and a
-            growth mindset, and I’m currently seeking opportunities to grow as a
-            developer and contribute meaningfully to real-world projects. When
-            I'm not coding, I enjoy watching tech content, exploring
-            productivity tools.
-          </p>
-          <br>
-          <br>
-          <p>
-            ✦ Discover  — The world is full of opportunities,chase the edge, break the map, and own your story.<br>
-            ✦ Learn — No one hands you wisdom. Hunt it. Fight for it. Feed the fire within.<br>
-            ✦ Evolve — Adapt fast. Change before the world forces you to.<br>
-            ✦ Own — Whatever you do — do it loud, do it full, and make it yours.
-          </p>
-        </section>
-
-        <section id="stats">
-          <h2>Stats</h2>
-          <div class="stats-container">
-  <div class="stat-box" data-color="#45a29e">
-    <div class="stat-water">
-      <div class="water" style="--fill-height: 40%;"></div>
-      <span>9*</span>
-    </div>
-    <p>No of Projects Built</p>
-  </div>
-  <div class="stat-box" data-color="#3b8d7b">
-    <div class="stat-water">
-      <div class="water" style="--fill-height: 40%;"></div>
-      <span>22*</span>
-    </div>
-    <p>No of Repositories</p>
-  </div>
-  <div class="stat-box" data-color="#2e6b5c">
-    <div class="stat-water">
-      <div class="water" style="--fill-height: 60%;"></div>
-      <span>20*</span>
-    </div>
-    <p>Skills Mastered</p>
-  </div>
-</div>
-        </section>
-
-        <section id="education" aria-labelledby="education-heading">
-          <h2 id="education-heading">My Education</h2>
-          <div class="timeline">
-            <div class="timeline-item" role="article">
-              <div class="dot"></div>
-              <div class="content content-left">
-                <h3>Intergrated Mtech in Computer Science</h3>
-                <p>VIT-AP University, 2022-2027</p>
-                <p>GPA: 8.18</p>
-              </div>
-            </div>
-            <div class="timeline-item" role="article">
-              <div class="dot"></div>
-              <div class="content content-right">
-                <h3>Intermediate MPC</h3>
-                <p>Sri Chaitanya Junior College, 2020-2022</p>
-                <p>Score : 950/1000</p>
-              </div>
-            </div>
-            <div class="timeline-item" role="article">
-              <div class="dot"></div>
-              <div class="content content-left">
-                <h3>High School</h3>
-                <p>Vowel 14 High School, 2016-2020</p>
-                <p>Score : 574/600</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="skills">
-          <h2>Skills</h2>
-          <div class="skill-icons">
-            <div class="skill-icon" data-tooltip="Java: Using JAVA for building springboot applications and OOPs Concepts">
-              <img src="images\JAVA L.webp" alt="Java" />
-            </div>
-            <div class="skill-icon" data-tooltip="HTML: Creating web pages">
-              <img src="images\HTML.png" alt="HTML" />
-            </div>
-            <div class="skill-icon" data-tooltip="CSS: Styling of web designs">
-              <img src="images\CSS.png" alt="CSS" />
-            </div>
-            <div class="skill-icon" data-tooltip="JavaScript: Building interactive web applications">
-              <img src="images\JS.png" alt="JavaScript" />
-            </div>
-            <div class="skill-icon" data-tooltip="React: Building dynamic designs">
-              <img src="images\React.png" alt="React" />
-            </div>
-            <div class="skill-icon" data-tooltip="Python: Multiple Libraries for using in Concepts of AI ">
-              <img src="images\PY l.png" alt="Python" />
-            </div>
-            <div class="skill-icon" data-tooltip="My SQL: Database Management">
-              <img src="images\MySQL.png" alt="My SQL" />
-            </div>
-            <div class="skill-icon" data-tooltip="GITHUB: Version Control">
-              <img src="images\GI.png" alt="GitHUB" />
-            </div>
-          </div>
-        </section>
-
-        <section id="projects">
-          <h2>Projects</h2>
-          <div class="projects-container">
-        <div class="project-card">
-              <div class="project-card-inner">
-                <div class="project-card-front">
-                  <h3>Resume Parsing App</h3>
-                </div>
-                <div class="project-card-back">
-                  <p>
-                    Developed a web-based application that automatically extracts key information from resumes (e.g., name, email, phone number, skills, and prediction) using Natural Language Processing (NLP) techniques. Leveraged libraries such as spaCy and PyPDF2 to preprocess and analyze unstructured text from PDF files, enabling structured data extraction.
-                  </p>
-                  <div class="project-skills">
-                    <span class="skill-box">Python</span>
-                    <span class="skill-box">spaCy</span>
-                    <span class="skill-box">PyPDF2</span>
-                  </div>
-                  <a
-                    href="https://github.com/keepudihemanth/Resume-Parsing-app"
-                    target="_blank"
-                    class="view-project-btn"
-                  >
-                    <span class="view-project-icon">🔗</span> View Project
-                  </a>
-                </div>
-              </div>
-            </div>
-          
-            <div class="project-card">
-              <div class="project-card-inner">
-                <div class="project-card-front">
-                  <h3>Sub Tracker</h3>
-                </div>
-                <div class="project-card-back">
-                  <p>
-                    Developed a MERN stack web appilcation , where users could track their subscriptions and their due dates.
-                  </p>
-                  <div class="project-skills">
-                    <span class="skill-box">React</span>
-                    <span class="skill-box">MongoDB</span>
-                    <span class="skill-box">NodeJS</span>
-                  </div>
-                  <a
-                    href="https://github.com/keepudihemanth/SubTracker"
-                    target="_blank"
-                    class="view-project-btn"
-                  >
-                    <span class="view-project-icon">🔗</span> View Project
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div class="project-card">
-              <div class="project-card-inner">
-                <div class="project-card-front">
-                  <h3>Heart Disease Predictor Using QNN</h3>
-                </div>
-                <div class="project-card-back">
-                  <p>
-                    Inspired from Quantum neural Networks, built a web app with qnn model integrated in it that does binary classifcation for prediction. 
-                  </p>
-                  <div class="project-skills">
-                    <span class="skill-box">PennyLane</span>
-                    <span class="skill-box">Qiskit</span>
-                    <span class="skill-box">Python</span>
-                  </div>
-                  <a
-                    href="https://github.com/keepudihemanth/Heart-Disease-WebApp"
-                    target="_blank"
-                    class="view-project-btn"
-                  >
-                    <span class="view-project-icon">🔗</span> View Project
-                  </a>
-                </div>
-              </div>
-            </div>
-            
-            <div class="project-card">
-              <div class="project-card-inner">
-                <div class="project-card-front">
-                  <h3>Eco-Friendly</h3>
-                  <h3>Ecommerce</h3>
-                </div>
-                <div class="project-card-back">
-                  <p>
-                    Developed a web-based application that promotes eco-friendly products and practices. The platform allows users to browse for recommended products based on category and purchase products while providing information on their environmental impact.
-                  </p>
-                  <div class="project-skills">
-                    <span class="skill-box">Python</span>
-                    <span class="skill-box">Flask</span>
-                    <span class="skill-box">Node.js</span>
-                  </div>
-                  <a
-                    href="https://github.com/keepudihemanth/Eco-Friendly-Ecommerce"
-                    target="_blank"
-                    class="view-project-btn"
-                  >
-                    <span class="view-project-icon">🔗</span> View Project
-                  </a>
-                </div>
-              </div>
-            </div>
-    
-    
-  
-  <div class="project-card">
-    <div class="project-card-inner">
-      <div class="project-card-front">
-        <h3>Task Manager</h3>
+    <section class="hero" id="top">
+      <div class="transmission">
+        <p class="signal"><span class="signal-dot"></span> Incoming transmission from Hemanth</p>
+        <p class="message"><span id="typed"></span><span class="caret"></span></p>
+        <span class="wave wave-1"></span>
+        <span class="wave wave-2"></span>
       </div>
-      <div class="project-card-back">
-        <p>
-          A Server Side robust application built with java and springboot to help users add tasks efficiently.
-        </p>
-        <div class="project-skills">
-          <span class="skill-box">Java</span>
-          <span class="skill-box">Bootstrap</span>
-          <span class="skill-box">HTML</span>
-          <span class="skill-box">MySQL</span>
-        </div>
-        <a
-          href="https://github.com/keepudihemanth/todoapplication"
-          target="_blank"
-          class="view-project-btn"
-        >
-          <span class="view-project-icon">🔗</span> View Project
+ 
+      <div class="hero-actions">
+        <a href="Resume_Hemanth.pdf" target="_blank" rel="noopener" class="btn btn-neon">
+          <img src="https://img.icons8.com/ios-filled/50/00ffff/resume.png" alt="" width="20" height="20" />
+          Resume
+        </a>
+        <a href="https://github.com/keepudihemanth" target="_blank" rel="noopener" class="btn btn-neon">
+          <img src="https://img.icons8.com/ios-filled/50/00ffff/github.png" alt="" width="20" height="20" />
+          GitHub
+        </a>
+        <a href="https://linkedin.com/in/keepudi-hemanth" target="_blank" rel="noopener" class="btn btn-neon">
+          <img src="https://img.icons8.com/ios-filled/50/00ffff/linkedin.png" alt="" width="20" height="20" />
+          LinkedIn
         </a>
       </div>
-    </div>
-  </div>
-        
-    <div class="project-card">
-      <div class="project-card-inner">
-        <div class="project-card-front">
-          <h3>More Projects</h3>
-        </div>
-        <div class="project-card-back">
-          <p>
-            Exciting projects are in development. Stay tuned for updates!
+ 
+      <a href="#about" class="scroll-hint" aria-label="Scroll to about">&#8595;</a>
+    </section>
+
+    <div class="container">
+      <section id="about" class="section reveal">
+        <p class="eyebrow">About</p>
+        <h2>Who I am</h2>
+        <div class="about-grid">
+          <p class="lead">
+            I'm a curious and driven Computer Science student with a strong foundation in programming, data structures and algorithms. I enjoy building efficient, scalable and user-friendly applications, whether that's a web app or a passion project.
           </p>
-          <div class="project-skills">
-            <span class="skill-box">TBD</span>
+          <p>
+            I've worked with Java, Python, HTML, CSS, JavaScript and frameworks like Spring Boot and React. I'm comfortable with Git and enjoy contributing to open-source projects on GitHub. I thrive in problem-solving environments and love hackathons, coding contests and hands-on builds.
+          </p>
+          <p>
+            My interests span Artificial Intelligence, Web Development and Cloud Computing. I value teamwork, clear communication and a growth mindset, and I'm always looking for opportunities to grow as a developer and contribute to real-world projects.
+          </p>
+        </div>
+
+        <ul class="values">
+          <li><span>Discover</span> The world is full of opportunities. Chase the edge, break the map, own your story.</li>
+          <li><span>Learn</span> No one hands you wisdom. Hunt it. Feed the fire within.</li>
+          <li><span>Evolve</span> Adapt fast. Change before the world forces you to.</li>
+        </ul>
+      </section>
+      <section id="stats" class="section reveal">
+        <p class="eyebrow">Stats</p>
+        <h2>By the numbers</h2>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-ring" style="--pct: 40%;">
+              <span class="count" data-target="21">0</span><span class="plus">+</span>
+            </div>
+            <p>Projects built</p>
           </div>
-          <a
-          href="https://github.com/keepudihemanth"
-          target="_blank"
-          class="view-project-btn"
-        >
-            <span class="view-project-icon">🔗</span> View Project
+          <div class="stat-card">
+            <div class="stat-ring" style="--pct: 60%;">
+              <span class="count" data-target="35">0</span><span class="plus">+</span>
+            </div>
+            <p>Repositories</p>
+          </div>
+          <div class="stat-card">
+            <div class="stat-ring" style="--pct: 75%;">
+              <span class="count" data-target="20">0</span><span class="plus">+</span>
+            </div>
+            <p>Skills mastered</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="education" class="section reveal">
+        <p class="eyebrow">Education</p>
+        <h2>Academic journey</h2>
+        <ol class="timeline">
+          <li class="timeline-item">
+            <span class="dot"></span>
+            <div class="card">
+              <p class="period">2022 - 2027</p>
+              <h3>Integrated M.Tech in Computer Science and Engineering</h3>
+              <p class="meta">Vellore Institute of Technology - Andhra Pradesh</p>
+            </div>
+          </li>
+          <li class="timeline-item">
+            <span class="dot"></span>
+            <div class="card">
+              <p class="period">2020 - 2022</p>
+              <h3>Intermediate</h3>
+              <p class="meta">Sri Chaitanya Junior College</p>
+            </div>
+          </li>
+          <li class="timeline-item">
+            <span class="dot"></span>
+            <div class="card">
+              <p class="period">2019 - 2020</p>
+              <h3>Secondary School Education</h3>
+              <p class="meta">Vowel 14 High School</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section id="skills" class="section reveal">
+        <p class="eyebrow">04 // Skills</p>
+        <h2>Tech stack</h2>
+        <div class="skill-group">
+          <h3 class="group-title"><span>01</span> Programming Languages</h3>
+          <div class="skills-grid">
+            <article class="skill-card" style="--level: 80%;">
+              <div class="skill-top">
+                <h3>Java</h3>
+                <span class="skill-pct">90%</span>
+              </div>
+              <p class="skill-note">Spring Boot and OOP concepts</p>
+              <div class="skill-meter" role="meter" aria-label="Java mastery" aria-valuemin="0" aria-valuemax="100" aria-valuenow="90">
+                <span class="skill-fill"></span>
+              </div>
+              <p class="skill-level">Advanced</p>
+            </article>
+            <article class="skill-card" style="--level: 80%;">
+              <div class="skill-top">
+                <h3>Python</h3>
+                <span class="skill-pct">80%</span>
+              </div>
+              <p class="skill-note">Scripting and data processing</p>
+              <div class="skill-meter" role="meter" aria-label="Python mastery" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80">
+                <span class="skill-fill"></span>
+              </div>
+              <p class="skill-level">Advanced</p>
+            </article>
+            <article class="skill-card" style="--level: 75%;">
+              <div class="skill-top">
+                <h3>JavaScript</h3>
+                <span class="skill-pct">75%</span>
+              </div>
+              <p class="skill-note">Interactive web applications</p>
+              <div class="skill-meter" role="meter" aria-label="JavaScript mastery" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75">
+                <span class="skill-fill"></span>
+              </div>
+              <p class="skill-level">Advanced</p>
+            </article>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3 class="group-title"><span>02</span> Software Development</h3>
+          <div class="skills-grid">
+            <article class="skill-card" style="--level: 90%;">
+              <div class="skill-top">
+                <h3>HTML</h3>
+                <span class="skill-pct">90%</span>
+              </div>
+              <p class="skill-note">Semantic, accessible pages</p>
+              <div class="skill-meter" role="meter" aria-label="HTML mastery" aria-valuemin="0" aria-valuemax="100" aria-valuenow="90">
+                <span class="skill-fill"></span>
+              </div>
+              <p class="skill-level">Expert</p>
+            </article>
+            <article class="skill-card" style="--level: 80%;">
+              <div class="skill-top">
+                <h3>CSS</h3>
+                <span class="skill-pct">80%</span>
+              </div>
+              <p class="skill-note">Layouts and responsive design</p>
+              <div class="skill-meter" role="meter" aria-label="CSS mastery" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80">
+                <span class="skill-fill"></span>
+              </div>
+              <p class="skill-level">Advanced</p>
+            </article>
+            <article class="skill-card" style="--level: 65%;">
+              <div class="skill-top">
+                <h3>React</h3>
+                <span class="skill-pct">85%</span>
+              </div>
+              <p class="skill-note">Component-based interfaces</p>
+              <div class="skill-meter" role="meter" aria-label="React mastery" aria-valuemin="0" aria-valuemax="100" aria-valuenow="85">
+                <span class="skill-fill"></span>
+              </div>
+              <p class="skill-level">Expert</p>
+            </article>
+            <article class="skill-card" style="--level: 85%;">
+              <div class="skill-top">
+                <h3>GitHub</h3>
+                <span class="skill-pct">85%</span>
+              </div>
+              <p class="skill-note">Version control and teamwork</p>
+              <div class="skill-meter" role="meter" aria-label="GitHub mastery" aria-valuemin="0" aria-valuemax="100" aria-valuenow="85">
+                <span class="skill-fill"></span>
+              </div>
+              <p class="skill-level">Advanced</p>
+            </article>
+            <article class="skill-card" style="--level: 85%;">
+              <div class="skill-top">
+                <h3>Docker</h3>
+                <span class="skill-pct">80%</span>
+              </div>
+              <p class="skill-note">Containerization and orchestration</p>
+              <div class="skill-meter" role="meter" aria-label="Docker   mastery" aria-valuemin="0" aria-valuemax="100" aria-valuenow="80">
+                <span class="skill-fill"></span>
+              </div>
+              <p class="skill-level">Advanced</p>
+            </article>
+            <article class="skill-card" style="--level: 85%;">
+              <div class="skill-top">
+                <h3>Testing</h3>
+                <span class="skill-pct">70%</span>
+              </div>
+              <p class="skill-note">Unit, integration, and end-to-end testing</p>
+              <div class="skill-meter" role="meter" aria-label="Testing mastery" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70">
+                <span class="skill-fill"></span>
+              </div>
+              <p class="skill-level">Intermediate</p>
+            </article>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3 class="group-title"><span>03</span> Databases</h3>
+          <div class="skills-grid">
+            <article class="skill-card" style="--level: 70%;">
+              <div class="skill-top">
+                <h3>MySQL</h3>
+                <span class="skill-pct">70%</span>
+              </div>
+              <p class="skill-note">Relational database design</p>
+              <div class="skill-meter" role="meter" aria-label="MySQL mastery" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70">
+                <span class="skill-fill"></span>
+              </div>
+              <p class="skill-level">Intermediate</p>
+            </article>
+            <article class="skill-card" style="--level: 70%;">
+              <div class="skill-top">
+                <h3>Mongo DB</h3>
+                <span class="skill-pct">70%</span>
+              </div>
+              <p class="skill-note">NoSQL database design</p>
+              <div class="skill-meter" role="meter" aria-label="Mongo DB mastery" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70">
+                <span class="skill-fill"></span>
+              </div>
+              <p class="skill-level">Intermediate</p>
+            </article>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3 class="group-title"><span>04</span> Network & Security</h3>
+          <div class="skills-grid">
+            <article class="skill-card" style="--level: 70%;">
+              <div class="skill-top">
+                <h3>Linux</h3>
+                <span class="skill-pct">70%</span>
+              </div>
+              <p class="skill-note">Linux system administration</p>
+              <div class="skill-meter" role="meter" aria-label="Linux mastery" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70">
+                <span class="skill-fill"></span>
+              </div>
+              <p class="skill-level">Intermediate</p>
+            </article>
+            <article class="skill-card" style="--level: 70%;">
+              <div class="skill-top">
+                <h3>Network Security</h3>
+                <span class="skill-pct">70%</span>
+              </div>
+              <p class="skill-note">Firewall configuration, intrusion detection</p>
+              <div class="skill-meter" role="meter" aria-label="Network Security mastery" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70">
+                <span class="skill-fill"></span>
+              </div>
+              <p class="skill-level">Intermediate</p>
+            </article>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3 class="group-title"><span>05</span> Cloud</h3>
+          <div class="skills-grid">
+            <article class="skill-card" style="--level: 70%;">
+              <div class="skill-top">
+                <h3>Google Cloud Platform</h3>
+                <span class="skill-pct">60%</span>
+              </div>
+              <p class="skill-note">Cloud infrastructure and services</p>
+              <div class="skill-meter" role="meter" aria-label="Google Cloud Platform mastery" aria-valuemin="0" aria-valuemax="100" aria-valuenow="60">
+                <span class="skill-fill"></span>
+              </div>
+              <p class="skill-level">Intermediate</p>
+            </article>
+            <article class="skill-card" style="--level: 70%;">
+              <div class="skill-top">
+                <h3>AWS</h3>
+                <span class="skill-pct">60%</span>
+              </div>
+              <p class="skill-note">Cloud infrastructure and services</p>
+              <div class="skill-meter" role="meter" aria-label="AWS mastery" aria-valuemin="0" aria-valuemax="100" aria-valuenow="60">
+                <span class="skill-fill"></span>
+              </div>
+              <p class="skill-level">Intermediate</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="section reveal">
+        <p class="eyebrow">Projects</p>
+        <h2>Selected work</h2>
+
+        <div class="domain-layout">
+          <div class="domain-tabs" role="tablist" aria-label="Project domains">
+            <button class="domain-btn is-active" role="tab" id="tab-sd" aria-controls="panel-sd" aria-selected="true" tabindex="0" data-domain="sd">
+              <span class="domain-icon" aria-hidden="true">&lt;/&gt;</span>
+              <span class="domain-text">
+                <strong>Software Development</strong>
+                <small>Web apps, backend, full stack</small>
+              </span>
+              <span class="domain-count">13*</span>
+            </button>
+
+            <button class="domain-btn" role="tab" id="tab-ai" aria-controls="panel-ai" aria-selected="false" tabindex="-1" data-domain="ai">
+              <span class="domain-icon" aria-hidden="true">AI</span>
+              <span class="domain-text">
+                <strong>AI / ML / DL</strong>
+                <small>NLP and quantum-inspired models</small>
+              </span>
+              <span class="domain-count">0</span>
+            </button>
+
+            <button class="domain-btn" role="tab" id="tab-cyber" aria-controls="panel-cyber" aria-selected="false" tabindex="-1" data-domain="cyber">
+              <span class="domain-icon" aria-hidden="true">&#128274;</span>
+              <span class="domain-text">
+                <strong>Cyber Security</strong>
+                <small>Security tools and analysis</small>
+              </span>
+              <span class="domain-count">0</span>
+            </button>
+          </div>
+
+          <div class="domain-panels">
+            <div class="domain-panel is-active" role="tabpanel" id="panel-sd" aria-labelledby="tab-sd" data-domain="sd">
+              <div class="panel-head">
+                <h3>Software Development</h3>
+                <p>Full-stack web apps and backend services built with Java, Spring Boot, the MERN stack and Flask.</p>
+              </div>
+              <div class="panel-projects">
+                <article class="project-card">
+                  <h3>Sub Tracker</h3>
+                  <p>A MERN stack web app where users track their subscriptions and upcoming due dates.</p>
+                  <div class="tags"><span>React</span><span>MongoDB</span><span>Node.js</span></div>
+                  <a href="https://github.com/keepudihemanth/SubTracker" target="_blank" rel="noopener" class="project-link">View project &rarr;</a>
+                </article>
+                <article class="project-card">
+                  <h3>Eco-Friendly Ecommerce</h3>
+                  <p>A platform promoting eco-friendly products. Users browse recommendations by category and see the environmental impact of each product.</p>
+                  <div class="tags"><span>Python</span><span>Flask</span><span>Node.js</span></div>
+                  <a href="https://github.com/keepudihemanth/Eco-Friendly-Ecommerce" target="_blank" rel="noopener" class="project-link">View project &rarr;</a>
+                </article>
+                <article class="project-card">
+                  <h3>Task Manager</h3>
+                  <p>A server-side application built with Java and Spring Boot to help users add and manage tasks efficiently.</p>
+                  <div class="tags"><span>Java</span><span>Spring Boot</span><span>Bootstrap</span><span>MySQL</span></div>
+                  <a href="https://github.com/keepudihemanth/todoapplication" target="_blank" rel="noopener" class="project-link">View project &rarr;</a>
+                </article>
+                <article class="project-card">
+                  <h3>Capsule for GITHUB Profiles</h3>
+                  <p>A application that allows user to create and manage their GITHUB profiles.</p>
+                  <div class="tags"><span>JavaScript</span></div>
+                  <a href="https://github.com/keepudihemanth/my-capsule" target="_blank" rel="noopener" class="project-link">View project &rarr;</a>
+                </article>
+                <article class="project-card">
+                  <h3>Selenium Testing on OFBMS</h3>
+                  <p>Automated testing of the OFBMS application using Selenium WebDriver.</p>
+                  <div class="tags"><span>Java</span><span>Selenium</span></div>
+                  <a href="https://github.com/keepudihemanth/selenium-test-ofbms" target="_blank" rel="noopener" class="project-link">View project &rarr;</a>
+                </article>
+                <article class="project-card">
+                  <h3>Plant Care Reminder</h3>
+                  <p>A simple application to remind users to water their plants and provide care tips.</p>
+                  <div class="tags"><span>FIGMA</span><span>React</span></div>
+                  <a href="https://github.com/keepudihemanth/Plant_Care_Reminder_UI-UX" target="_blank" rel="noopener" class="project-link">View project &rarr;</a>
+                </article>
+                <article class="project-card project-card--more">
+                  <h3>More projects</h3>
+                  <p>Follow my GitHub for updates as new Software projects go up.</p>
+                  <a href="https://github.com/keepudihemanth" target="_blank" rel="noopener" class="project-link">Browse GitHub &rarr;</a>
+                </article>
+              </div>
+            </div>
+
+            <div class="domain-panel" role="tabpanel" id="panel-ai" aria-labelledby="tab-ai" data-domain="ai">
+              <div class="panel-head">
+                <h3>AI / ML / DL</h3>
+                <p>Machine learning, deep learning and NLP projects, including quantum-inspired neural networks.</p>
+              </div>
+              <div class="panel-projects">
+                <article class="project-card">
+                  <h3>Resume Intelligence Engine</h3>
+                  <p>Extracts name, email, phone, skills and a prediction from resumes using NLP. Preprocesses unstructured PDF text with spaCy and PyPDF2.</p>
+                  <div class="tags"><span>Python</span><span>spaCy</span><span>PyPDF2</span></div>
+                  <a href="https://github.com/keepudihemanth/Resume-Parsing-app" target="_blank" rel="noopener" class="project-link">View project &rarr;</a>
+                </article>
+                <article class="project-card">
+                  <h3>Heart Disease Predictor using QNN</h3>
+                  <p>Inspired by quantum neural networks, a web app with a QNN model that performs binary classification for heart disease prediction.</p>
+                  <div class="tags"><span>PennyLane</span><span>Qiskit</span><span>Python</span></div>
+                  <a href="https://github.com/keepudihemanth/Heart-Disease-WebApp" target="_blank" rel="noopener" class="project-link">View project &rarr;</a>
+                </article>
+                <article class="project-card">
+                  <h3>Hybrid Deep fake Detection</h3>
+                  <p>A machine learning model for detecting hybrid deep fakes using a combination of traditional and quantum approaches.</p>
+                  <div class="tags"><span>React</span><span>Frequency CNN</span><span>Python</span></div>
+                  <a href="https://github.com/keepudihemanth/Hybrid-Deepfake-Detection" target="_blank" rel="noopener" class="project-link">View project &rarr;</a>
+                </article>
+                <article class="project-card">
+                  <h3>Mini Weather Benchmark</h3>
+                  <p>A simple weather benchmarking tool to compare different ML models inspired from google Weather Benchmark 2.</p>
+                  <div class="tags"><span>Python</span><span>Jupyter Notebook</span><span>ML Models</span></div>
+                  <a href="https://github.com/keepudihemanth/Mini_Weather_Benchmark" target="_blank" rel="noopener" class="project-link">View project &rarr;</a>
+                </article>
+                <article class="project-card project-card--more">
+                  <h3>More projects</h3>
+                  <p>Follow my GitHub for updates as new AI/ML/DL projects go up.</p>
+                  <a href="https://github.com/keepudihemanth" target="_blank" rel="noopener" class="project-link">Browse GitHub &rarr;</a>
+                </article>
+              </div>
+            </div>
+
+            <div class="domain-panel" role="tabpanel" id="panel-cyber" aria-labelledby="tab-cyber" data-domain="cyber">
+              <div class="panel-head">
+                <h3>Cyber Security</h3>
+                <p>Security is my next focus area. Projects in this domain are being planned and built.</p>
+              </div>
+              <div class="panel-projects">
+                <article class="project-card project-card--more">
+                  <h3>Coming soon</h3>
+                  <p>Follow my GitHub for updates as new security projects go up.</p>
+                  <a href="https://github.com/keepudihemanth" target="_blank" rel="noopener" class="project-link">Browse GitHub &rarr;</a>
+                </article>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section reveal contact">
+        <p class="eyebrow">Contact</p>
+        <h2>Let's build something</h2>
+        <p class="contact-lead">Open to internships, collaborations , contributionsand interesting problems. Say hello.</p>
+        <a class="email" href="mailto:keepudihemanth6329@gmail.com">keepudihemanth6329@gmail.com</a>
+        <div class="contact-buttons">
+          <a href="https://www.linkedin.com/in/keepudi-hemanth" target="_blank" rel="noopener" class="btn btn-outline">
+            <img src="images/linkedin.webp" alt="" width="20" height="20" /> LinkedIn
+          </a>
+          <a href="https://github.com/keepudihemanth" target="_blank" rel="noopener" class="btn btn-outline">
+            <img src="images/Git.webp" alt="" width="20" height="20" /> GitHub
           </a>
         </div>
-      </div>
+      </section>
     </div>
+  </main>
 
-  </div> 
-</section>
-
-
-        <section id="contact">
-          <h2>Contact</h2>
-          <p class="contact-email">
-            <span class="contact-icon">✉️</span>
-              <a href="mailto:keepudihemanth6329@gmail.com">keepudihemanth6329@gmail.com</a>
-          </p>
-          <div class="contact-buttons">
-            <a href="https://www.linkedin.com/in/keepudi-hemanth" target="_blank" rel="noopener noreferrer" class="contact-btn linkedin-btn">
-            <img src="images\linkedin.webp" alt="LinkedIn Logo" class="contact-logo">LinkedIn</a>
-            <a href="https://github.com/keepudihemanth" target="_blank" rel="noopener noreferrer" class="contact-btn github-btn">
-            <img src="images\Git.webp" alt="GitHub Logo" class="contact-logo">GitHub</a>
-          </div>
-        </section>
-  
-    <footer>
-      <p>© 2026 .</p>
-      <div class="footer-nav">
-        <nav>
-          <a href="#">Home</a>
-        </nav>
-      </div>
-    </footer>
-  </body>
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> Hemanth Keepudi. Built with HTML, CSS and JavaScript.</p>
+    <a href="#top">Back to top &uarr;</a>
+  </footer>
+</body>
 </html>
